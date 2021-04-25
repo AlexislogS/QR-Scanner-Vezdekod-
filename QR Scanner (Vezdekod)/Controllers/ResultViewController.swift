@@ -7,20 +7,43 @@
 
 import UIKit
 
+extension String {
+
+    // MARK: Get remove all characters exept numbers
+
+    func onlyDigits() -> String {
+        let filtredUnicodeScalars = unicodeScalars.filter { CharacterSet.decimalDigits.contains($0) }
+        return String(String.UnicodeScalarView(filtredUnicodeScalars))
+    }
+
+}
+
 class ResultViewController: UIViewController {
   
   @IBOutlet private weak var actionButton: UIButton!
   @IBOutlet private weak var textLabel: UILabel! { didSet { textLabel.text = scannedText } }
   
+  enum ResultType {
+    case phone, web, text
+  }
+  
   var scannedText: String?
   private var hasSetPointOrigin = false
   private var pointOrigin: CGPoint?
   private var pulse: Pulsing?
+  private var resultType: ResultType = .text
   
   override func viewDidLoad() {
     super.viewDidLoad()
     actionButton.layer.cornerRadius = actionButton.bounds.width / 2
     view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dismissVC(sender:))))
+    if scannedText?.hasPrefix("TEL") == true {
+      textLabel.text?.append("\n\n(phone number)")
+      resultType = .phone
+    } else if scannedText?.hasPrefix("http") == true {
+      resultType = .web
+      textLabel.text?.append("\n\n(website)")
+    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -37,8 +60,12 @@ class ResultViewController: UIViewController {
   
   @IBAction func actionButtonPressed() {
     guard let scannedText = scannedText else { return }
-    let activityVC = UIActivityViewController(activityItems: [scannedText], applicationActivities: nil)
-    present(activityVC, animated: true)
+    if resultType != .text, let url = URL(string: scannedText) {
+      UIApplication.shared.open(url)
+    } else {
+      let activityVC = UIActivityViewController(activityItems: [scannedText], applicationActivities: nil)
+      present(activityVC, animated: true)
+    }
   }
   
   private func addPulseAnimation() {

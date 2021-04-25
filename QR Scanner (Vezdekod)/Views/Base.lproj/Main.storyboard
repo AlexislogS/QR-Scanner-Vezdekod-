@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t91-dd-1Yp">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scanner View Controller-->
+        <scene sceneID="Rlf-NN-OHl">
+            <objects>
+                <viewController modalPresentationStyle="pageSheet" hidesBottomBarWhenPushed="YES" id="t91-dd-1Yp" customClass="ScannerViewController" customModule="QR_Scanner__Vezdekod_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="6UZ-gT-fIs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="BrT-Zv-GzB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="analyticsName" value="QRScanner"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="Z5u-dQ-GHa" kind="show" identifier="showDetail" id="GLs-0l-fKa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="566-iC-xVx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747.82608695652175" y="93.75"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="rag-gO-T0H">
+            <objects>
+                <viewController id="Z5u-dQ-GHa" customClass="ResultViewController" customModule="QR_Scanner__Vezdekod_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bSw-9J-qWf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleAspectFit" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBe-q4-Wam">
+                                <rect key="frame" x="162" y="688" width="90" height="90"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mBe-q4-Wam" secondAttribute="height" id="kMI-Ec-GHt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" image="square.and.arrow.up" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <connections>
+                                    <action selector="actionButtonPressed" destination="Z5u-dQ-GHa" eventType="touchUpInside" id="cKa-qz-kPo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UcN-pU-m4O">
+                                <rect key="frame" x="20" y="20" width="374" height="20.5"/>
+                                <color key="tintColor" name="primary"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pEz-iG-C5r"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pEz-iG-C5r" firstAttribute="trailing" secondItem="UcN-pU-m4O" secondAttribute="trailing" constant="20" id="AeW-wO-qvl"/>
+                            <constraint firstItem="UcN-pU-m4O" firstAttribute="leading" secondItem="pEz-iG-C5r" secondAttribute="leading" constant="20" id="DIH-fb-NtI"/>
+                            <constraint firstItem="mBe-q4-Wam" firstAttribute="width" secondItem="bSw-9J-qWf" secondAttribute="width" multiplier="0.217391" id="MCm-KP-eQH"/>
+                            <constraint firstItem="mBe-q4-Wam" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UcN-pU-m4O" secondAttribute="bottom" constant="20" id="ha3-Cd-v11"/>
+                            <constraint firstItem="UcN-pU-m4O" firstAttribute="top" secondItem="pEz-iG-C5r" secondAttribute="top" constant="20" id="sSC-lE-4kw"/>
+                            <constraint firstItem="mBe-q4-Wam" firstAttribute="centerX" secondItem="pEz-iG-C5r" secondAttribute="centerX" id="ubc-mg-lNo"/>
+                            <constraint firstItem="pEz-iG-C5r" firstAttribute="bottom" secondItem="mBe-q4-Wam" secondAttribute="bottom" constant="30" id="viL-HM-CiD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rNw-zG-3y2"/>
+                    <connections>
+                        <outlet property="actionButton" destination="mBe-q4-Wam" id="yng-9Q-N2f"/>
+                        <outlet property="textLabel" destination="UcN-pU-m4O" id="ZgB-xE-izS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FU0-8J-gyb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1658" y="94"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <namedColor name="primary">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
